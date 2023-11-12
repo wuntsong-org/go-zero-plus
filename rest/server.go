@@ -238,6 +238,18 @@ func WithNotAllowedHandler(handler http.Handler) RunOption {
 	}
 }
 
+func WithOptionsHandler(handler http.Handler) RunOption {
+	return func(server *Server) {
+		server.router.SetOptionsHandler(handler)
+	}
+}
+
+func WithGlobalMiddleware(middleware httpx.MiddlewareFunc) RunOption {
+	return func(server *Server) {
+		server.router.SetMiddleware(middleware)
+	}
+}
+
 // WithPrefix adds group as a prefix to the route paths.
 func WithPrefix(group string) RouteOption {
 	return func(r *featuredRoutes) {

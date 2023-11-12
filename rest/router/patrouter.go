@@ -24,9 +24,11 @@ var (
 )
 
 type patRouter struct {
-	trees      map[string]*search.Tree
-	notFound   http.Handler
-	notAllowed http.Handler
+	trees         map[string]*search.Tree
+	notFound      http.Handler
+	notAllowed    http.Handler
+	optionsHandle http.Handler
+	middleware    httpx.MiddlewareFunc
 }
 
 // NewRouter returns a httpx.Router.
@@ -57,6 +59,19 @@ func (pr *patRouter) Handle(method, reqPath string, handler http.Handler) error 
 }
 
 func (pr *patRouter) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	if pr.middleware != nil {
+		pr.middleware(http.HandlerFunc(pr.serveHTTP)).ServeHTTP(w, r)
+	} else {
+		pr.serveHTTP(w, r)
+	}
+}
+
+func (pr *patRouter) serveHTTP(w http.ResponseWriter, r *http.Request) {
+	if r.Method == http.MethodOptions && pr.optionsHandle != nil {
+		pr.optionsHandle.ServeHTTP(w, r)
+		return
+	}
+
 	reqPath := path.Clean(r.URL.Path)
 	if tree, ok := pr.trees[r.Method]; ok {
 		if result, ok := tree.Search(reqPath); ok {
@@ -88,6 +103,23 @@ func (pr *patRouter) SetNotFoundHandler(handler http.Handler) {
 
 func (pr *patRouter) SetNotAllowedHandler(handler http.Handler) {
 	pr.notAllowed = handler
+}
+
+func (pr *patRouter) SetOptionsHandler(handler http.Handler) {
+	f := func(w http.ResponseWriter, r *http.Request) {
+		if r.Method != http.MethodOptions {
+			pr.notAllowed.ServeHTTP(w, r)
+			return
+		}
+
+		handler.ServeHTTP(w, r)
+	}
+
+	pr.optionsHandle = http.HandlerFunc(f)
+}
+
+func (pr *patRouter) SetMiddleware(middleware httpx.MiddlewareFunc) {
+	pr.middleware = middleware
 }
 
 func (pr *patRouter) handleNotFound(w http.ResponseWriter, r *http.Request) {

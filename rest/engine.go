@@ -302,7 +302,7 @@ func (ng *engine) signatureVerifier(signature signatureSetting) (func(chain.Chai
 	}, nil
 }
 
-func (ng *engine) start(router httpx.Router, opts ...StartOption) error {
+func (ng *engine) start(ch chan *http.Server, router httpx.Router, opts ...StartOption) error {
 	if err := ng.bindRoutes(router); err != nil {
 		return err
 	}
@@ -311,7 +311,7 @@ func (ng *engine) start(router httpx.Router, opts ...StartOption) error {
 	opts = append([]StartOption{ng.withTimeout()}, opts...)
 
 	if len(ng.conf.CertFile) == 0 && len(ng.conf.KeyFile) == 0 {
-		return internal.StartHttp(ng.conf.Host, ng.conf.Port, router, opts...)
+		return internal.StartHttp(ch, ng.conf.Host, ng.conf.Port, router, opts...)
 	}
 
 	// make sure user defined options overwrite default options
@@ -323,7 +323,7 @@ func (ng *engine) start(router httpx.Router, opts ...StartOption) error {
 		},
 	}, opts...)
 
-	return internal.StartHttps(ng.conf.Host, ng.conf.Port, ng.conf.CertFile,
+	return internal.StartHttps(ch, ng.conf.Host, ng.conf.Port, ng.conf.CertFile,
 		ng.conf.KeyFile, router, opts...)
 }
 

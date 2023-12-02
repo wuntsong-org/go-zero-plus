@@ -17,16 +17,22 @@ const probeNamePrefix = "rest"
 type StartOption func(svr *http.Server)
 
 // StartHttp starts a http server.
-func StartHttp(host string, port int, handler http.Handler, opts ...StartOption) error {
+func StartHttp(ch chan *http.Server, host string, port int, handler http.Handler, opts ...StartOption) error {
 	return start(host, port, handler, func(svr *http.Server) error {
+		if ch != nil {
+			ch <- svr
+		}
 		return svr.ListenAndServe()
 	}, opts...)
 }
 
 // StartHttps starts a https server.
-func StartHttps(host string, port int, certFile, keyFile string, handler http.Handler,
+func StartHttps(ch chan *http.Server, host string, port int, certFile, keyFile string, handler http.Handler,
 	opts ...StartOption) error {
 	return start(host, port, handler, func(svr *http.Server) error {
+		if ch != nil {
+			ch <- svr
+		}
 		// certFile and keyFile are set in buildHttpsServer
 		return svr.ListenAndServeTLS(certFile, keyFile)
 	}, opts...)

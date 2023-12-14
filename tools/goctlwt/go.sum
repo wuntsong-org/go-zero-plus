@@ -170,6 +170,7 @@ github.com/withfig/autocomplete-tools/integrations/cobra v1.2.1 h1:+dBg5k7nuTE38
 github.com/withfig/autocomplete-tools/integrations/cobra v1.2.1/go.mod h1:nmuySobZb4kFgFy6BptpXp/BBw+xFSyvVPP6auoJB4k=
 github.com/wuntsong-org/go-zero-plus v1.0.1/go.mod h1:YpodKGBb0wC8K+Qor1Yc9J3BlOfEq8LnqcVrbX5jBo8=
 github.com/wuntsong-org/go-zero-plus v1.2.1/go.mod h1:RWspL3Y+03ifu1zRtOMlvI0sws4lnAWAM3e09IAOlMY=
+github.com/wuntsong-org/go-zero-plus v1.3.0/go.mod h1:YpodKGBb0wC8K+Qor1Yc9J3BlOfEq8LnqcVrbX5jBo8=
 github.com/xo/terminfo v0.0.0-20210125001918-ca9a967f8778 h1:QldyIu/L63oPpyvQmHgvgickp1Yw510KJOqX7H24mg8=
 github.com/xo/terminfo v0.0.0-20210125001918-ca9a967f8778/go.mod h1:2MuV+tbUrU1zIOPMxZ5EncGwgmMJsa+9ucAQZXxsObs=
 github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=

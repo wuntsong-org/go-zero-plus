@@ -10,10 +10,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/zeromicro/go-zero/core/executors"
-	"github.com/zeromicro/go-zero/core/logx"
-	"github.com/zeromicro/go-zero/core/proc"
-	"github.com/zeromicro/go-zero/core/sysx"
+	"github.com/wuntsong-org/go-zero-plus/core/executors"
+	"github.com/wuntsong-org/go-zero-plus/core/logx"
+	"github.com/wuntsong-org/go-zero-plus/core/proc"
+	"github.com/wuntsong-org/go-zero-plus/core/sysx"
 )
 
 const (

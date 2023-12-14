@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/zeromicro/go-zero/core/breaker"
-	"github.com/zeromicro/go-zero/core/logx"
-	"github.com/zeromicro/go-zero/core/stat"
-	"github.com/zeromicro/go-zero/rest/httpx"
-	"github.com/zeromicro/go-zero/rest/internal/response"
+	"github.com/wuntsong-org/go-zero-plus/core/breaker"
+	"github.com/wuntsong-org/go-zero-plus/core/logx"
+	"github.com/wuntsong-org/go-zero-plus/core/stat"
+	"github.com/wuntsong-org/go-zero-plus/rest/httpx"
+	"github.com/wuntsong-org/go-zero-plus/rest/internal/response"
 )
 
 const breakerSeparator = "://"

@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/zeromicro/go-zero/core/trace"
+	"github.com/wuntsong-org/go-zero-plus/core/trace"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"

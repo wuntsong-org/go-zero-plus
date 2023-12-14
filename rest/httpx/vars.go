@@ -1,6 +1,6 @@
 package httpx
 
-import "github.com/zeromicro/go-zero/rest/internal/header"
+import "github.com/wuntsong-org/go-zero-plus/rest/internal/header"
 
 const (
 	// ContentEncoding means Content-Encoding.

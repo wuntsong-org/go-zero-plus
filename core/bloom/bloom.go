@@ -5,8 +5,8 @@ import (
 	"errors"
 	"strconv"
 
-	"github.com/zeromicro/go-zero/core/hash"
-	"github.com/zeromicro/go-zero/core/stores/redis"
+	"github.com/wuntsong-org/go-zero-plus/core/hash"
+	"github.com/wuntsong-org/go-zero-plus/core/stores/redis"
 )
 
 // for detailed error rate table, see http://pages.cs.wisc.edu/~cao/papers/summary-cache/node8.html

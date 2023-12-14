@@ -1,13 +1,13 @@
 package service
 
 import (
-	"github.com/zeromicro/go-zero/core/load"
-	"github.com/zeromicro/go-zero/core/logx"
-	"github.com/zeromicro/go-zero/core/proc"
-	"github.com/zeromicro/go-zero/core/prometheus"
-	"github.com/zeromicro/go-zero/core/stat"
-	"github.com/zeromicro/go-zero/core/trace"
-	"github.com/zeromicro/go-zero/internal/devserver"
+	"github.com/wuntsong-org/go-zero-plus/core/load"
+	"github.com/wuntsong-org/go-zero-plus/core/logx"
+	"github.com/wuntsong-org/go-zero-plus/core/proc"
+	"github.com/wuntsong-org/go-zero-plus/core/prometheus"
+	"github.com/wuntsong-org/go-zero-plus/core/stat"
+	"github.com/wuntsong-org/go-zero-plus/core/trace"
+	"github.com/wuntsong-org/go-zero-plus/internal/devserver"
 )
 
 const (

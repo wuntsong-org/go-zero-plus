@@ -7,13 +7,13 @@ import (
 	"path"
 	"time"
 
-	"github.com/zeromicro/go-zero/core/logx"
-	"github.com/zeromicro/go-zero/rest/chain"
-	"github.com/zeromicro/go-zero/rest/handler"
-	"github.com/zeromicro/go-zero/rest/httpx"
-	"github.com/zeromicro/go-zero/rest/internal"
-	"github.com/zeromicro/go-zero/rest/internal/cors"
-	"github.com/zeromicro/go-zero/rest/router"
+	"github.com/wuntsong-org/go-zero-plus/core/logx"
+	"github.com/wuntsong-org/go-zero-plus/rest/chain"
+	"github.com/wuntsong-org/go-zero-plus/rest/handler"
+	"github.com/wuntsong-org/go-zero-plus/rest/httpx"
+	"github.com/wuntsong-org/go-zero-plus/rest/internal"
+	"github.com/wuntsong-org/go-zero-plus/rest/internal/cors"
+	"github.com/wuntsong-org/go-zero-plus/rest/router"
 )
 
 type (

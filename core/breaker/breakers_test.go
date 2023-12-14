@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/zeromicro/go-zero/core/stat"
+	"github.com/wuntsong-org/go-zero-plus/core/stat"
 )
 
 func init() {

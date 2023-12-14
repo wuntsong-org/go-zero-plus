@@ -5,7 +5,7 @@ import (
 
 	red "github.com/go-redis/redis/v8"
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/zeromicro/go-zero/core/metric"
+	"github.com/wuntsong-org/go-zero-plus/core/metric"
 )
 
 const namespace = "redis_client"

@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/zeromicro/go-zero/core/discov/internal"
-	"github.com/zeromicro/go-zero/core/stringx"
+	"github.com/wuntsong-org/go-zero-plus/core/discov/internal"
+	"github.com/wuntsong-org/go-zero-plus/core/stringx"
 )
 
 func TestRegisterAccount(t *testing.T) {

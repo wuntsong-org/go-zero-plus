@@ -5,8 +5,8 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus/testutil"
 	"github.com/stretchr/testify/assert"
-	"github.com/zeromicro/go-zero/core/proc"
-	"github.com/zeromicro/go-zero/core/prometheus"
+	"github.com/wuntsong-org/go-zero-plus/core/proc"
+	"github.com/wuntsong-org/go-zero-plus/core/prometheus"
 )
 
 func TestNewCounterVec(t *testing.T) {

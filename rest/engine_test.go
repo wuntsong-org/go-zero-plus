@@ -5,6 +5,7 @@ import (
 	"crypto/tls"
 	"errors"
 	"fmt"
+	"github.com/wuntsong-org/go-zero-plus/rest/httpx"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -13,10 +14,10 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/zeromicro/go-zero/core/conf"
-	"github.com/zeromicro/go-zero/core/fs"
-	"github.com/zeromicro/go-zero/core/logx"
-	"github.com/zeromicro/go-zero/rest/router"
+	"github.com/wuntsong-org/go-zero-plus/core/conf"
+	"github.com/wuntsong-org/go-zero-plus/core/fs"
+	"github.com/wuntsong-org/go-zero-plus/core/logx"
+	"github.com/wuntsong-org/go-zero-plus/rest/router"
 )
 
 const (
@@ -443,4 +444,10 @@ func (m mockedRouter) SetNotFoundHandler(_ http.Handler) {
 }
 
 func (m mockedRouter) SetNotAllowedHandler(_ http.Handler) {
+}
+
+func (m mockedRouter) SetOptionsHandler(_ http.Handler) {
+}
+
+func (m mockedRouter) SetMiddleware(_ httpx.MiddlewareFunc) {
 }

@@ -5,9 +5,9 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/zeromicro/go-zero/core/logx"
-	"github.com/zeromicro/go-zero/core/syncx"
-	"github.com/zeromicro/go-zero/core/timex"
+	"github.com/wuntsong-org/go-zero-plus/core/logx"
+	"github.com/wuntsong-org/go-zero-plus/core/syncx"
+	"github.com/wuntsong-org/go-zero-plus/core/timex"
 )
 
 const defaultSlowThreshold = time.Millisecond * 500

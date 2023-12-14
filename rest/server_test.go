@@ -13,12 +13,12 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/zeromicro/go-zero/core/conf"
-	"github.com/zeromicro/go-zero/core/logx/logtest"
-	"github.com/zeromicro/go-zero/rest/chain"
-	"github.com/zeromicro/go-zero/rest/httpx"
-	"github.com/zeromicro/go-zero/rest/internal/cors"
-	"github.com/zeromicro/go-zero/rest/router"
+	"github.com/wuntsong-org/go-zero-plus/core/conf"
+	"github.com/wuntsong-org/go-zero-plus/core/logx/logtest"
+	"github.com/wuntsong-org/go-zero-plus/rest/chain"
+	"github.com/wuntsong-org/go-zero-plus/rest/httpx"
+	"github.com/wuntsong-org/go-zero-plus/rest/internal/cors"
+	"github.com/wuntsong-org/go-zero-plus/rest/router"
 )
 
 func TestNewServer(t *testing.T) {

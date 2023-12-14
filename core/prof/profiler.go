@@ -1,6 +1,6 @@
 package prof
 
-import "github.com/zeromicro/go-zero/core/utils"
+import "github.com/wuntsong-org/go-zero-plus/core/utils"
 
 type (
 	// A ProfilePoint is a profile time point.

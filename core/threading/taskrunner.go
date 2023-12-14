@@ -1,8 +1,8 @@
 package threading
 
 import (
-	"github.com/zeromicro/go-zero/core/lang"
-	"github.com/zeromicro/go-zero/core/rescue"
+	"github.com/wuntsong-org/go-zero-plus/core/lang"
+	"github.com/wuntsong-org/go-zero-plus/core/rescue"
 )
 
 // A TaskRunner is used to control the concurrency of goroutines.

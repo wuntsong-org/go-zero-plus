@@ -4,9 +4,9 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/zeromicro/go-zero/core/discov/internal"
-	"github.com/zeromicro/go-zero/core/logx"
-	"github.com/zeromicro/go-zero/core/syncx"
+	"github.com/wuntsong-org/go-zero-plus/core/discov/internal"
+	"github.com/wuntsong-org/go-zero-plus/core/logx"
+	"github.com/wuntsong-org/go-zero-plus/core/syncx"
 )
 
 type (

@@ -5,10 +5,10 @@ import (
 	"errors"
 	"log"
 
-	"github.com/zeromicro/go-zero/core/errorx"
-	"github.com/zeromicro/go-zero/core/hash"
-	"github.com/zeromicro/go-zero/core/stores/cache"
-	"github.com/zeromicro/go-zero/core/stores/redis"
+	"github.com/wuntsong-org/go-zero-plus/core/errorx"
+	"github.com/wuntsong-org/go-zero-plus/core/hash"
+	"github.com/wuntsong-org/go-zero-plus/core/stores/cache"
+	"github.com/wuntsong-org/go-zero-plus/core/stores/redis"
 )
 
 // ErrNoRedisNode is an error that indicates no redis node.

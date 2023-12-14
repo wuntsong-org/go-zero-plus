@@ -4,9 +4,9 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/zeromicro/go-zero/core/discov"
-	"github.com/zeromicro/go-zero/core/service"
-	"github.com/zeromicro/go-zero/core/stores/redis"
+	"github.com/wuntsong-org/go-zero-plus/core/discov"
+	"github.com/wuntsong-org/go-zero-plus/core/service"
+	"github.com/wuntsong-org/go-zero-plus/core/stores/redis"
 )
 
 func TestRpcClientConf(t *testing.T) {

@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/zeromicro/go-zero/core/stores/redis/redistest"
-	"github.com/zeromicro/go-zero/zrpc/internal/auth"
+	"github.com/wuntsong-org/go-zero-plus/core/stores/redis/redistest"
+	"github.com/wuntsong-org/go-zero-plus/zrpc/internal/auth"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 )

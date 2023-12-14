@@ -7,10 +7,10 @@ import (
 	"log"
 	"time"
 
-	"github.com/zeromicro/go-zero/core/errorx"
-	"github.com/zeromicro/go-zero/core/hash"
-	"github.com/zeromicro/go-zero/core/stores/redis"
-	"github.com/zeromicro/go-zero/core/syncx"
+	"github.com/wuntsong-org/go-zero-plus/core/errorx"
+	"github.com/wuntsong-org/go-zero-plus/core/hash"
+	"github.com/wuntsong-org/go-zero-plus/core/stores/redis"
+	"github.com/wuntsong-org/go-zero-plus/core/syncx"
 )
 
 type (

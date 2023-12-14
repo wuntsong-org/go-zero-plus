@@ -10,9 +10,9 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/zeromicro/go-zero/rest/httpx"
-	"github.com/zeromicro/go-zero/rest/internal/header"
-	"github.com/zeromicro/go-zero/rest/pathvar"
+	"github.com/wuntsong-org/go-zero-plus/rest/httpx"
+	"github.com/wuntsong-org/go-zero-plus/rest/internal/header"
+	"github.com/wuntsong-org/go-zero-plus/rest/pathvar"
 )
 
 const contentLength = "Content-Length"

@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/zeromicro/go-zero/core/discov"
-	"github.com/zeromicro/go-zero/core/netx"
+	"github.com/wuntsong-org/go-zero-plus/core/discov"
+	"github.com/wuntsong-org/go-zero-plus/core/netx"
 )
 
 func TestNewRpcPubServer(t *testing.T) {

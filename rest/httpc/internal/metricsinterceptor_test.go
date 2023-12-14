@@ -8,7 +8,7 @@ import (
 
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
-	"github.com/zeromicro/go-zero/core/logx"
+	"github.com/wuntsong-org/go-zero-plus/core/logx"
 )
 
 func TestMetricsInterceptor(t *testing.T) {

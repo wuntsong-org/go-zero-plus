@@ -12,10 +12,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/zeromicro/go-zero/core/jsonx"
-	"github.com/zeromicro/go-zero/core/lang"
-	"github.com/zeromicro/go-zero/core/proc"
-	"github.com/zeromicro/go-zero/core/stringx"
+	"github.com/wuntsong-org/go-zero-plus/core/jsonx"
+	"github.com/wuntsong-org/go-zero-plus/core/lang"
+	"github.com/wuntsong-org/go-zero-plus/core/proc"
+	"github.com/wuntsong-org/go-zero-plus/core/stringx"
 )
 
 const (

@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/zeromicro/go-zero/core/iox"
-	"github.com/zeromicro/go-zero/core/logx"
+	"github.com/wuntsong-org/go-zero-plus/core/iox"
+	"github.com/wuntsong-org/go-zero-plus/core/logx"
 )
 
 const (

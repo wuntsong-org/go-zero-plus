@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/zeromicro/go-zero/core/color"
+	"github.com/wuntsong-org/go-zero-plus/core/color"
 )
 
 func TestWithColor(t *testing.T) {

@@ -10,8 +10,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/zeromicro/go-zero/core/lang"
-	"github.com/zeromicro/go-zero/core/stringx"
+	"github.com/wuntsong-org/go-zero-plus/core/lang"
+	"github.com/wuntsong-org/go-zero-plus/core/stringx"
 )
 
 const (

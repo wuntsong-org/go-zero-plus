@@ -3,7 +3,7 @@ package mon
 import (
 	"time"
 
-	"github.com/zeromicro/go-zero/core/syncx"
+	"github.com/wuntsong-org/go-zero-plus/core/syncx"
 	mopt "go.mongodb.org/mongo-driver/mongo/options"
 )
 

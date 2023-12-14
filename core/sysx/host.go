@@ -3,7 +3,7 @@ package sysx
 import (
 	"os"
 
-	"github.com/zeromicro/go-zero/core/stringx"
+	"github.com/wuntsong-org/go-zero-plus/core/stringx"
 )
 
 var hostname string

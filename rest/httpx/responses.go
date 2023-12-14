@@ -8,9 +8,9 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/zeromicro/go-zero/core/logx"
-	"github.com/zeromicro/go-zero/rest/internal/errcode"
-	"github.com/zeromicro/go-zero/rest/internal/header"
+	"github.com/wuntsong-org/go-zero-plus/core/logx"
+	"github.com/wuntsong-org/go-zero-plus/rest/internal/errcode"
+	"github.com/wuntsong-org/go-zero-plus/rest/internal/header"
 )
 
 var (

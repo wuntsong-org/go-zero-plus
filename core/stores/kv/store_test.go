@@ -6,10 +6,10 @@ import (
 
 	"github.com/alicebob/miniredis/v2"
 	"github.com/stretchr/testify/assert"
-	"github.com/zeromicro/go-zero/core/hash"
-	"github.com/zeromicro/go-zero/core/stores/cache"
-	"github.com/zeromicro/go-zero/core/stores/redis"
-	"github.com/zeromicro/go-zero/core/stringx"
+	"github.com/wuntsong-org/go-zero-plus/core/hash"
+	"github.com/wuntsong-org/go-zero-plus/core/stores/cache"
+	"github.com/wuntsong-org/go-zero-plus/core/stores/redis"
+	"github.com/wuntsong-org/go-zero-plus/core/stringx"
 )
 
 var (

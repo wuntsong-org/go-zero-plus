@@ -15,7 +15,7 @@ import (
 
 const (
 	contentMd5Header = "Content-Md5"
-	filename         = "goctlwt"
+	filename         = "goctl"
 )
 
 var configFile = flag.String("f", "etc/update-api.json", "the config file")

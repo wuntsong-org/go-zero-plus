@@ -44,46 +44,46 @@ func check(_ *cobra.Command, _ []string) error {
 func Prepare(install, force, verbose bool) error {
 	log := console.NewColorConsole(verbose)
 	pending := true
-	log.Info("[goctlwt-env]: preparing to check env")
+	log.Info("[goctl-env]: preparing to check env")
 	defer func() {
 		if p := recover(); p != nil {
 			log.Error("%+v", p)
 			return
 		}
 		if pending {
-			log.Success("\n[goctlwt-env]: congratulations! your goctlwt environment is ready!")
+			log.Success("\n[goctl-env]: congratulations! your goctl environment is ready!")
 		} else {
 			log.Error(`
-[goctlwt-env]: check env finish, some dependencies is not found in PATH, you can execute
-command 'goctlwt env check --install' to install it, for details, please execute command 
-'goctlwt env check --help'`)
+[goctl-env]: check env finish, some dependencies is not found in PATH, you can execute
+command 'goctl env check --install' to install it, for details, please execute command 
+'goctl env check --help'`)
 		}
 	}()
 	for _, e := range bins {
 		time.Sleep(200 * time.Millisecond)
 		log.Info("")
-		log.Info("[goctlwt-env]: looking up %q", e.name)
+		log.Info("[goctl-env]: looking up %q", e.name)
 		if e.exists {
-			log.Success("[goctlwt-env]: %q is installed", e.name)
+			log.Success("[goctl-env]: %q is installed", e.name)
 			continue
 		}
-		log.Warning("[goctlwt-env]: %q is not found in PATH", e.name)
+		log.Warning("[goctl-env]: %q is not found in PATH", e.name)
 		if install {
 			install := func() {
-				log.Info("[goctlwt-env]: preparing to install %q", e.name)
+				log.Info("[goctl-env]: preparing to install %q", e.name)
 				path, err := e.get(env.Get(env.GoctlCache))
 				if err != nil {
-					log.Error("[goctlwt-env]: an error interrupted the installation: %+v", err)
+					log.Error("[goctl-env]: an error interrupted the installation: %+v", err)
 					pending = false
 				} else {
-					log.Success("[goctlwt-env]: %q is already installed in %q", e.name, path)
+					log.Success("[goctl-env]: %q is already installed in %q", e.name, path)
 				}
 			}
 			if force {
 				install()
 				continue
 			}
-			console.Info("[goctlwt-env]: do you want to install %q [y: YES, n: No]", e.name)
+			console.Info("[goctl-env]: do you want to install %q [y: YES, n: No]", e.name)
 			for {
 				var in string
 				fmt.Scanln(&in)
@@ -94,10 +94,10 @@ command 'goctlwt env check --install' to install it, for details, please execute
 					brk = true
 				case strings.EqualFold(in, "n"):
 					pending = false
-					console.Info("[goctlwt-env]: %q installation is ignored", e.name)
+					console.Info("[goctl-env]: %q installation is ignored", e.name)
 					brk = true
 				default:
-					console.Error("[goctlwt-env]: invalid input, input 'y' for yes, 'n' for no")
+					console.Error("[goctl-env]: invalid input, input 'y' for yes, 'n' for no")
 				}
 				if brk {
 					break

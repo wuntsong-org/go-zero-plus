@@ -36,7 +36,7 @@ const (
 	ExperimentalOff = "off"
 )
 
-// init initializes the goctlwt environment variables, the environment variables of the function are set in order,
+// init initializes the goctl environment variables, the environment variables of the function are set in order,
 // please do not change the logic order of the code.
 func init() {
 	defaultGoctlHome, err := pathx.GetDefaultGoctlHome()

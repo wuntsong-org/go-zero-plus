@@ -31,8 +31,8 @@ func (f File) execute(goctl string) error {
 		printDir = filepath.Dir(printDir)
 		dir = filepath.Dir(dir)
 	}
-	printCommand := strings.ReplaceAll(fmt.Sprintf("cd %s && %s", printDir, f.Cmd), "goctlwt", filepath.Base(goctl))
-	command := strings.ReplaceAll(fmt.Sprintf("cd %s && %s", dir, f.Cmd), "goctlwt", goctl)
+	printCommand := strings.ReplaceAll(fmt.Sprintf("cd %s && %s", printDir, f.Cmd), "goctl", filepath.Base(goctl))
+	command := strings.ReplaceAll(fmt.Sprintf("cd %s && %s", dir, f.Cmd), "goctl", goctl)
 	fmt.Println(color.LightGreen.Render(printCommand))
 	cmd := exec.Command("sh", "-c", command)
 	cmd.Env = os.Environ()
@@ -101,14 +101,14 @@ func mustGetTestData(baseDir string) (Files, Files) {
 
 func MustRun(baseDir string) {
 	oldFiles, newFiles := mustGetTestData(baseDir)
-	goctlOld, err := exec.LookPath("goctlwt.old")
+	goctlOld, err := exec.LookPath("goctl.old")
 	must(err)
-	goctlNew, err := exec.LookPath("goctlwt")
+	goctlNew, err := exec.LookPath("goctl")
 	must(err)
-	fmt.Println(color.LightBlue.Render("========================goctlwt.old======================="))
+	fmt.Println(color.LightBlue.Render("========================goctl.old======================="))
 	must(oldFiles.execute(goctlOld))
 	fmt.Println()
-	fmt.Println(color.LightBlue.Render("========================goctlwt.new======================="))
+	fmt.Println(color.LightBlue.Render("========================goctl.new======================="))
 	must(newFiles.execute(goctlNew))
 }
 

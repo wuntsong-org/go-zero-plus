@@ -2,7 +2,7 @@ package config
 
 import "github.com/wuntsong-org/go-zero-plus/core/logx"
 
-// Config defines a service configure for goctlwt update
+// Config defines a service configure for goctl update
 type Config struct {
 	logx.LogConf
 	ListenOn string

@@ -41,7 +41,7 @@ var (
 	VarStringDatabase string
 	// VarStringSchema describes the schema of postgresql.
 	VarStringSchema string
-	// VarStringHome describes the goctlwt home.
+	// VarStringHome describes the goctl home.
 	VarStringHome string
 	// VarStringRemote describes the remote git repository.
 	VarStringRemote string

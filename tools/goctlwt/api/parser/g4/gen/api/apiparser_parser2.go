@@ -8,7 +8,7 @@ import (
 
 // Part 2
 // The apiparser_parser.go file was split into multiple files because it
-// was too large and caused a possible memory overflow during goctlwt installation.
+// was too large and caused a possible memory overflow during goctl installation.
 
 type InfoSpecContext struct {
 	*antlr.BaseParserRuleContext

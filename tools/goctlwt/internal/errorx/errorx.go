@@ -7,12 +7,12 @@ import (
 	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/pkg/env"
 )
 
-var errorFormat = `goctlwt error: %+v
-goctlwt env:
+var errorFormat = `goctl error: %+v
+goctl env:
 %s
 %s`
 
-// GoctlError represents a goctlwt error.
+// GoctlError represents a goctl error.
 type GoctlError struct {
 	message []string
 	err     error
@@ -23,7 +23,7 @@ func (e *GoctlError) Error() string {
 	return fmt.Sprintf(errorFormat, e.err, env.Print(), detail)
 }
 
-// Wrap wraps an error with goctlwt version and message.
+// Wrap wraps an error with goctl version and message.
 func Wrap(err error, message ...string) error {
 	e, ok := err.(*GoctlError)
 	if ok {

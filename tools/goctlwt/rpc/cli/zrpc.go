@@ -19,7 +19,7 @@ var (
 )
 
 // ZRPC generates grpc code directly by protoc and generates
-// zrpc code by goctlwt.
+// zrpc code by goctl.
 func ZRPC(_ *cobra.Command, args []string) error {
 	protocArgs := wrapProtocCmd("protoc", args)
 	pwd, err := os.Getwd()

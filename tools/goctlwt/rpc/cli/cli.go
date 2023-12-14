@@ -16,7 +16,7 @@ import (
 var (
 	// VarStringOutput describes the output.
 	VarStringOutput string
-	// VarStringHome describes the goctlwt home.
+	// VarStringHome describes the goctl home.
 	VarStringHome string
 	// VarStringRemote describes the remote git repository.
 	VarStringRemote string
@@ -109,7 +109,7 @@ func RPCNew(_ *cobra.Command, args []string) error {
 // RPCTemplate is the entry for generate rpc template
 func RPCTemplate(latest bool) error {
 	if !latest {
-		console.Warning("deprecated: goctlwt rpc template -o is deprecated and will be removed in the future, use goctlwt rpc -o instead")
+		console.Warning("deprecated: goctl rpc template -o is deprecated and will be removed in the future, use goctl rpc -o instead")
 	}
 	protoFile := VarStringOutput
 	home := VarStringHome

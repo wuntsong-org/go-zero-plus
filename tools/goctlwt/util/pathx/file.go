@@ -19,7 +19,7 @@ import (
 // NL defines a new line.
 const (
 	NL              = "\n"
-	goctlDir        = ".goctlwt"
+	goctlDir        = ".goctl"
 	gitDir          = ".git"
 	autoCompleteDir = ".auto_complete"
 	cacheDir        = "cache"
@@ -27,7 +27,7 @@ const (
 
 var goctlHome string
 
-// RegisterGoctlHome register goctlwt home path.
+// RegisterGoctlHome register goctl home path.
 func RegisterGoctlHome(home string) {
 	goctlHome = home
 }
@@ -75,7 +75,7 @@ func FileNameWithoutExt(file string) string {
 	return strings.TrimSuffix(file, filepath.Ext(file))
 }
 
-// GetGoctlHome returns the path value of the goctlwt, the default path is ~/.goctlwt, if the path has
+// GetGoctlHome returns the path value of the goctl, the default path is ~/.goctl, if the path has
 // been set by calling the RegisterGoctlHome method, the user-defined path refers to.
 func GetGoctlHome() (home string, err error) {
 	defer func() {
@@ -96,7 +96,7 @@ func GetGoctlHome() (home string, err error) {
 	return
 }
 
-// GetDefaultGoctlHome returns the path value of the goctlwt home where Join $HOME with .goctlwt.
+// GetDefaultGoctlHome returns the path value of the goctl home where Join $HOME with .goctl.
 func GetDefaultGoctlHome() (string, error) {
 	home, err := os.UserHomeDir()
 	if err != nil {
@@ -105,7 +105,7 @@ func GetDefaultGoctlHome() (string, error) {
 	return filepath.Join(home, goctlDir), nil
 }
 
-// GetGitHome returns the git home of goctlwt.
+// GetGitHome returns the git home of goctl.
 func GetGitHome() (string, error) {
 	goctlH, err := GetGoctlHome()
 	if err != nil {
@@ -115,7 +115,7 @@ func GetGitHome() (string, error) {
 	return filepath.Join(goctlH, gitDir), nil
 }
 
-// GetAutoCompleteHome returns the auto_complete home of goctlwt.
+// GetAutoCompleteHome returns the auto_complete home of goctl.
 func GetAutoCompleteHome() (string, error) {
 	goctlH, err := GetGoctlHome()
 	if err != nil {
@@ -125,7 +125,7 @@ func GetAutoCompleteHome() (string, error) {
 	return filepath.Join(goctlH, autoCompleteDir), nil
 }
 
-// GetCacheDir returns the cache dit of goctlwt.
+// GetCacheDir returns the cache dit of goctl.
 func GetCacheDir() (string, error) {
 	goctlH, err := GetGoctlHome()
 	if err != nil {

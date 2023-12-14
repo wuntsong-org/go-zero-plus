@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-// BuildVersion is the version of goctlwt.
+// BuildVersion is the version of goctl.
 const BuildVersion = "1.6.0"
 
 var tag = map[string]int{"pre-alpha": 0, "alpha": 1, "pre-bata": 2, "beta": 3, "released": 4, "": 5}
@@ -15,7 +15,7 @@ func GetGoctlVersion() string {
 	return BuildVersion
 }
 
-// IsVersionGreaterThan compares whether the current goctlwt version
+// IsVersionGreaterThan compares whether the current goctl version
 // is greater than the target version
 func IsVersionGreaterThan(version, target string) bool {
 	versionNumber, versionTag := convertVersion(version)
@@ -25,7 +25,7 @@ func IsVersionGreaterThan(version, target string) bool {
 	} else if versionNumber < targetVersionNumber {
 		return false
 	} else {
-		// unchecked case, in normal, the goctlwt version does not contain suffix in release.
+		// unchecked case, in normal, the goctl version does not contain suffix in release.
 		return tag[versionTag] > tag[targetTag]
 	}
 }

@@ -62,7 +62,7 @@ func TestFormat(t *testing.T) {
 }
 
 func Test_apiFormatReader_issue1721(t *testing.T) {
-	dir, err := os.MkdirTemp("", "goctlwt-api-format")
+	dir, err := os.MkdirTemp("", "goctl-api-format")
 	require.NoError(t, err)
 	defer os.RemoveAll(dir)
 	subDir := path.Join(dir, "sub")

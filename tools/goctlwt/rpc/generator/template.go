@@ -35,7 +35,7 @@ var templates = map[string]string{
 	rpcTemplateFile:           rpcTemplateText,
 }
 
-// GenTemplates is the entry for command goctlwt template,
+// GenTemplates is the entry for command goctl template,
 // it will create the specified category
 func GenTemplates() error {
 	return pathx.InitTemplates(category, templates)

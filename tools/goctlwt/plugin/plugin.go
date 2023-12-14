@@ -40,7 +40,7 @@ var (
 	VarStringStyle string
 )
 
-// PluginCommand is the entry of goctlwt api plugin
+// PluginCommand is the entry of goctl api plugin
 func PluginCommand(_ *cobra.Command, _ []string) error {
 	ex, err := os.Executable()
 	if err != nil {

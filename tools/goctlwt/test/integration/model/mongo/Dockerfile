@@ -7,6 +7,6 @@ WORKDIR /app
 ADD goctl /usr/bin/goctl
 ADD cmd.sh .
 
-RUN chmod +x /usr/bin/goctlwt
+RUN chmod +x /usr/bin/goctl
 RUN chmod +x cmd.sh
 CMD ["/bin/bash", "cmd.sh"]

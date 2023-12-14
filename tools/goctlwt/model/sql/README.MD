@@ -7,7 +7,7 @@ goctl model 为go-zero下的工具模块中的组件之一，目前支持识别m
 * 通过ddl生成
 
     ```shell script
-    goctlwt model mysql ddl -src="./*.sql" -dir="./sql/model" -c
+    goctl model mysql ddl -src="./*.sql" -dir="./sql/model" -c
     ```
 
     执行上述命令后即可快速生成CURD代码。
@@ -21,7 +21,7 @@ goctl model 为go-zero下的工具模块中的组件之一，目前支持识别m
 * 通过datasource生成
 
     ```shell script
-    goctlwt model mysql datasource -url="user:password@tcp(127.0.0.1:3306)/database" -table="*"  -dir="./model"
+    goctl model mysql datasource -url="user:password@tcp(127.0.0.1:3306)/database" -table="*"  -dir="./model"
     ```
 
 * 生成代码示例
@@ -246,7 +246,7 @@ OPTIONS:
   * ddl
 
 	```shell script
-	goctlwt model mysql -src={patterns} -dir={dir} -cache
+	goctl model mysql -src={patterns} -dir={dir} -cache
 	```
 
 	help
@@ -270,7 +270,7 @@ OPTIONS:
   * datasource
 
 	```shell script
-	goctlwt model mysql datasource -url={datasource} -table={patterns}  -dir={dir} -cache=true
+	goctl model mysql datasource -url={datasource} -table={patterns}  -dir={dir} -cache=true
 	```
 
 	help
@@ -304,26 +304,26 @@ OPTIONS:
   * ddl
   
       ```shell script
-        goctlwt model -src={patterns} -dir={dir}
+        goctl model -src={patterns} -dir={dir}
       ```
 
   * datasource
   
       ```shell script
-        goctlwt model mysql datasource -url={datasource} -table={patterns}  -dir={dir}
+        goctl model mysql datasource -url={datasource} -table={patterns}  -dir={dir}
       ```
 
   or
   * ddl
 
       ```shell script
-        goctlwt model -src={patterns} -dir={dir}
+        goctl model -src={patterns} -dir={dir}
       ```
 
   * datasource
   
       ```shell script
-        goctlwt model mysql datasource -url={datasource} -table={patterns}  -dir={dir}
+        goctl model mysql datasource -url={datasource} -table={patterns}  -dir={dir}
       ```
   
 生成代码仅基本的CURD结构。

@@ -4,5 +4,5 @@
 新增若干功能  
 
 ## 开源项目
-[go-zero](https://github.com/zeromicro/go-zero)  
+[go-zero](https://github.com/wuntsong-org/go-zero-plus)  
 [go-zero-superh](https://github.com/SuperH-0630/go-zero)  

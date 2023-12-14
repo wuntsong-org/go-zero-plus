@@ -11,7 +11,7 @@ import (
 )
 
 // GenPb generates the pb.go file, which is a layer of packaging for protoc to generate gprc,
-// but the commands and flags in protoc are not completely joined in goctlwt. At present, proto_path(-I) is introduced
+// but the commands and flags in protoc are not completely joined in goctl. At present, proto_path(-I) is introduced
 func (g *Generator) GenPb(ctx DirContext, c *ZRpcContext) error {
 	return g.genPbDirect(ctx, c)
 }

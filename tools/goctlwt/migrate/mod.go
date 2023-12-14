@@ -14,7 +14,7 @@ import (
 
 const (
 	deprecatedGoZeroMod = "github.com/tal-tech/go-zero"
-	deprecatedBuilderx  = "github.com/tal-tech/go-zero/tools/goctlwt/model/sql/builderx"
+	deprecatedBuilderx  = "github.com/tal-tech/go-zero/tools/goctl/model/sql/builderx"
 	replacementBuilderx = "github.com/wuntsong-org/go-zero-plus/core/stores/builder"
 	goZeroMod           = "github.com/wuntsong-org/go-zero-plus"
 )

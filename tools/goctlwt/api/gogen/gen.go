@@ -26,7 +26,7 @@ import (
 const tmpFile = "%s-%d"
 
 var (
-	tmpDir = path.Join(os.TempDir(), "goctlwt")
+	tmpDir = path.Join(os.TempDir(), "goctl")
 	// VarStringDir describes the directory.
 	VarStringDir string
 	// VarStringAPI describes the API.

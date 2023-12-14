@@ -10,8 +10,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/wuntsong-org/go-zero-plus/core/breaker"
 	"github.com/wuntsong-org/go-zero-plus/core/logx"
+	"github.com/wuntsong-org/go-zero-plus/core/stores/dbtest"
 	"github.com/wuntsong-org/go-zero-plus/core/trace/tracetest"
-	"github.com/wuntsong-org/go-zero-plus/internal/dbtest"
 )
 
 const mockedDatasource = "sqlmock"

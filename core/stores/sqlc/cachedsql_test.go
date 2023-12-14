@@ -22,11 +22,11 @@ import (
 	"github.com/wuntsong-org/go-zero-plus/core/logx"
 	"github.com/wuntsong-org/go-zero-plus/core/stat"
 	"github.com/wuntsong-org/go-zero-plus/core/stores/cache"
+	"github.com/wuntsong-org/go-zero-plus/core/stores/dbtest"
 	"github.com/wuntsong-org/go-zero-plus/core/stores/redis"
 	"github.com/wuntsong-org/go-zero-plus/core/stores/redis/redistest"
 	"github.com/wuntsong-org/go-zero-plus/core/stores/sqlx"
 	"github.com/wuntsong-org/go-zero-plus/core/syncx"
-	"github.com/wuntsong-org/go-zero-plus/internal/dbtest"
 )
 
 func init() {

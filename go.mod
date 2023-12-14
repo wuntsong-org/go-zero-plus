@@ -122,4 +122,3 @@ require (
 )
 
 replace github.com/zeromicro/go-zero => ./
-replace github.com/zeromicro/go-zero/internal/dbtest => ./core/stores/dbtest

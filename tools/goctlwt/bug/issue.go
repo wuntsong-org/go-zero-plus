@@ -3,14 +3,14 @@ package bug
 const issueTemplate = `
 <!-- Please answer these questions before submitting your issue. Thanks! -->
 
-### What category of issue (<code>goctl</code> or <code>sdk</code>)?
+### What category of issue (<code>goctlwt</code> or <code>sdk</code>)?
 
 ### What type of issue (<code>feature</code>|<code>bug</code>|<code>suggestion</code>)?
 
-### What version of Goctl are you using (<code>goctl --version</code>)?
+### What version of Goctl are you using (<code>goctlwt --version</code>)?
 
 <pre>
-$ goctl --version
+$ goctlwt --version
 %s
 </pre>
 

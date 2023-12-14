@@ -11,7 +11,7 @@ import (
 )
 
 func Test_needShow1_3_4(t *testing.T) {
-	root, err := os.MkdirTemp("", "goctl-model")
+	root, err := os.MkdirTemp("", "goctlwt-model")
 	require.NoError(t, err)
 	defer os.RemoveAll(root)
 

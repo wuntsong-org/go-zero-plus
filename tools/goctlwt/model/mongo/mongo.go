@@ -23,7 +23,7 @@ var (
 	VarBoolEasy bool
 	// VarStringStyle describes the style.
 	VarStringStyle string
-	// VarStringHome describes the goctl home.
+	// VarStringHome describes the goctlwt home.
 	VarStringHome string
 	// VarStringRemote describes the remote git repository.
 	VarStringRemote string
@@ -31,7 +31,7 @@ var (
 	VarStringBranch string
 )
 
-// Action provides the entry for goctl mongo code generation.
+// Action provides the entry for goctlwt mongo code generation.
 func Action(_ *cobra.Command, _ []string) error {
 	tp := VarStringSliceType
 	c := VarBoolCache

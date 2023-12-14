@@ -1,3 +1,7 @@
+// test case: expected syntax statement
+info ()
+
+-----
 // test case: duplicate syntax statement
 syntax = "v1"
 syntax = "v1"

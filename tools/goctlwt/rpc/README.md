@@ -19,7 +19,7 @@ Goctl Rpc是`goctl`脚手架下的一个rpc服务代码生成模块，支持prot
   如生成greet rpc服务：
 
   ```Bash
-  goctl rpc new greet
+  goctlwt rpc new greet
   ```
 
   执行后代码结构如下:
@@ -51,7 +51,7 @@ Goctl Rpc是`goctl`脚手架下的一个rpc服务代码生成模块，支持prot
 * 生成proto模板
 
 ```Bash
-$ goctl rpc template -o=user.proto
+$ goctlwt rpc template -o=user.proto
 ```
   
 ```proto
@@ -77,7 +77,7 @@ service User {
 * 生成rpc服务代码
 
 ```bash
-$ goctl rpc protoc  user.proto --go_out=. --go-grpc_out=. --zrpc_out=.
+$ goctlwt rpc protoc  user.proto --go_out=. --go-grpc_out=. --zrpc_out=.
 ```
 
 
@@ -86,23 +86,23 @@ $ goctl rpc protoc  user.proto --go_out=. --go-grpc_out=. --zrpc_out=.
 ### rpc 服务生成用法
 
 ```Bash
-$ goctl rpc protoc -h
+$ goctlwt rpc protoc -h
 Generate grpc code
 
 Usage:
-  goctl rpc protoc [flags]
+  goctlwt rpc protoc [flags]
 
 Examples:
-goctl rpc protoc xx.proto --go_out=./pb --go-grpc_out=./pb --zrpc_out=.
+goctlwt rpc protoc xx.proto --go_out=./pb --go-grpc_out=./pb --zrpc_out=.
 
 Flags:
       --branch string     The branch of the remote repo, it does work with --remote
   -h, --help              help for protoc
-      --home string       The goctl home path of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
+      --home string       The goctlwt home path of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
   -m, --multiple          Generated in multiple rpc service mode
       --remote string     The remote git repo of the template, --home and --remote cannot be set at the same time, if they are, --remote has higher priority
                           	The git repo directory must be consistent with the https://github.com/wuntsong-org/go-zero-plus-template directory structure
-      --style string      The file naming format, see [https://github.com/wuntsong-org/go-zero-plus/tree/master/tools/goctl/config/readme.md] (default "gozero")
+      --style string      The file naming format, see [https://github.com/wuntsong-org/go-zero-plus/tree/master/tools/goctlwt/config/readme.md] (default "gozero")
   -v, --verbose           Enable log output
       --zrpc_out string   The zrpc output directory
 ```
@@ -127,7 +127,7 @@ Flags:
 
 
 ## rpc 服务生成 example
-详情见 [example/rpc](https://github.com/wuntsong-org/go-zero-plus/tree/master/tools/goctl/example)
+详情见 [example/rpc](https://github.com/zeromicro/go-zero/tree/master/tools/goctl/example)
 
 ## --multiple 为 true 和 false 的目录区别
 源 proto 文件

@@ -35,13 +35,15 @@ var (
 	VarStringURL string
 	// VarStringSliceTable describes tables.
 	VarStringSliceTable []string
+	// VarStringTable describes a table of sql.
+	VarStringTable string
 	// VarStringStyle describes the style.
 	VarStringStyle string
 	// VarStringDatabase describes the database.
 	VarStringDatabase string
 	// VarStringSchema describes the schema of postgresql.
 	VarStringSchema string
-	// VarStringHome describes the goctl home.
+	// VarStringHome describes the goctlwt home.
 	VarStringHome string
 	// VarStringRemote describes the remote git repository.
 	VarStringRemote string
@@ -209,14 +211,13 @@ func PostgreSqlDataSource(_ *cobra.Command, _ []string) error {
 		schema = "public"
 	}
 
-	patterns := parseTableList(VarStringSliceTable)
+	pattern := strings.TrimSpace(VarStringTable)
 	cfg, err := config.NewConfig(style)
 	if err != nil {
 		return err
 	}
-	ignoreColumns := mergeColumns(VarStringSliceIgnoreColumns)
 
-	return fromPostgreSqlDataSource(url, patterns, dir, schema, cfg, cache, idea, VarBoolStrict, ignoreColumns)
+	return fromPostgreSqlDataSource(url, pattern, dir, schema, cfg, cache, idea, VarBoolStrict)
 }
 
 type ddlArg struct {
@@ -328,7 +329,7 @@ func fromMysqlDataSource(arg dataSourceArg) error {
 	return generator.StartFromInformationSchema(matchTables, arg.cache, arg.strict)
 }
 
-func fromPostgreSqlDataSource(url string, pattern pattern, dir, schema string, cfg *config.Config, cache, idea, strict bool, ignoreColumns []string) error {
+func fromPostgreSqlDataSource(url, pattern, dir, schema string, cfg *config.Config, cache, idea, strict bool) error {
 	log := console.NewConsole(idea)
 	if len(url) == 0 {
 		log.Error("%v", "expected data source of postgresql, but nothing found")
@@ -349,7 +350,12 @@ func fromPostgreSqlDataSource(url string, pattern pattern, dir, schema string, c
 
 	matchTables := make(map[string]*model.Table)
 	for _, item := range tables {
-		if !pattern.Match(item) {
+		match, err := filepath.Match(pattern, item)
+		if err != nil {
+			return err
+		}
+
+		if !match {
 			continue
 		}
 
@@ -370,7 +376,7 @@ func fromPostgreSqlDataSource(url string, pattern pattern, dir, schema string, c
 		return errors.New("no tables matched")
 	}
 
-	generator, err := gen.NewDefaultGenerator(dir, cfg, gen.WithConsoleOption(log), gen.WithPostgreSql(), gen.WithIgnoreColumns(ignoreColumns))
+	generator, err := gen.NewDefaultGenerator(dir, cfg, gen.WithConsoleOption(log), gen.WithPostgreSql())
 	if err != nil {
 		return err
 	}

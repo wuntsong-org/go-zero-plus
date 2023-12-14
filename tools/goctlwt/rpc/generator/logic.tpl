@@ -5,7 +5,7 @@ import (
 
 	{{.imports}}
 
-	"github.com/wuntsong-org/go-zero-plus/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type {{.logicName}} struct {

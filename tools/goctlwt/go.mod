@@ -1,4 +1,4 @@
-module github.com/wuntsong-org/go-zero-plus/tools/goctlwtwt
+module github.com/wuntsong-org/go-zero-plus/tools/goctlwt
 
 go 1.21
 
@@ -6,17 +6,16 @@ toolchain go1.21.0
 
 require (
 	github.com/DATA-DOG/go-sqlmock v1.5.0
-	github.com/emicklei/proto v1.12.2
+	github.com/emicklei/proto v1.12.1
 	github.com/fatih/structtag v1.2.0
 	github.com/go-sql-driver/mysql v1.7.1
 	github.com/gookit/color v1.5.4
 	github.com/iancoleman/strcase v0.3.0
-	github.com/spf13/cobra v1.8.0
+	github.com/spf13/cobra v1.7.0
 	github.com/spf13/pflag v1.0.5
 	github.com/stretchr/testify v1.8.4
 	github.com/withfig/autocomplete-tools/integrations/cobra v1.2.1
-	github.com/wuntsong-org/go-zero-plus v1.5.0
-	github.com/wuntsong-org/go-zero-plus/tools/goctlwt v0.0.0-20231214074533-4b2d014bef4f
+	github.com/wuntsong-org/go-zero-plus v1.7.0
 	github.com/zeromicro/antlr v0.0.1
 	github.com/zeromicro/ddl-parser v1.0.5
 	golang.org/x/text v0.14.0
@@ -37,6 +36,7 @@ require (
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/emicklei/go-restful/v3 v3.11.0 // indirect
 	github.com/fatih/color v1.16.0 // indirect
+	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/go-logr/logr v1.3.0 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-openapi/jsonpointer v0.19.6 // indirect

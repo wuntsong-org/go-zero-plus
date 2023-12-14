@@ -7,12 +7,12 @@ source ../../../common/echo.sh
 
 console_tip "mongo  test"
 
-# build goctl
+# build goctlwt
 console_step "goctl building"
 
-buildFile=goctl
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o $buildFile ../../../../goctl.go
-image=goctl-mongo:latest
+buildFile=goctlwt
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o $buildFile ../../../../goctlwt.go
+image=goctlwt-mongo:latest
 
 # docker build
 console_step "docker building"

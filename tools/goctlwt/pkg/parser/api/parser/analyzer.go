@@ -2,13 +2,10 @@ package parser
 
 import (
 	"fmt"
-	"sort"
 	"strings"
 
-	"github.com/wuntsong-org/go-zero-plus/core/lang"
 	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/api/spec"
 	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/pkg/parser/api/ast"
-	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/pkg/parser/api/importstack"
 	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/pkg/parser/api/placeholder"
 	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/pkg/parser/api/token"
 )
@@ -21,14 +18,13 @@ type Analyzer struct {
 
 func (a *Analyzer) astTypeToSpec(in ast.DataType) (spec.Type, error) {
 	isLiteralType := func(dt ast.DataType) bool {
-		if _, ok := dt.(*ast.BaseDataType); ok {
+		_, ok := dt.(*ast.BaseDataType)
+		if ok {
 			return true
 		}
-
-		_, ok := dt.(*ast.AnyDataType)
+		_, ok = dt.(*ast.AnyDataType)
 		return ok
 	}
-
 	switch v := (in).(type) {
 	case *ast.BaseDataType:
 		raw := v.RawText()
@@ -37,7 +33,6 @@ func (a *Analyzer) astTypeToSpec(in ast.DataType) (spec.Type, error) {
 				RawName: raw,
 			}, nil
 		}
-
 		return spec.DefineStruct{RawName: raw}, nil
 	case *ast.AnyDataType:
 		return nil, ast.SyntaxError(v.Pos(), "unsupported any type")
@@ -52,12 +47,10 @@ func (a *Analyzer) astTypeToSpec(in ast.DataType) (spec.Type, error) {
 		if !v.Key.CanEqual() {
 			return nil, ast.SyntaxError(v.Pos(), "map key <%T> must be equal data type", v)
 		}
-
 		value, err := a.astTypeToSpec(v.Value)
 		if err != nil {
 			return nil, err
 		}
-
 		return spec.MapType{
 			RawName: v.RawText(),
 			Key:     v.RawText(),
@@ -73,7 +66,6 @@ func (a *Analyzer) astTypeToSpec(in ast.DataType) (spec.Type, error) {
 		if err != nil {
 			return nil, err
 		}
-
 		return spec.PointerType{
 			RawName: v.RawText(),
 			Type:    value,
@@ -82,12 +74,10 @@ func (a *Analyzer) astTypeToSpec(in ast.DataType) (spec.Type, error) {
 		if v.Length.Token.Type == token.ELLIPSIS {
 			return nil, ast.SyntaxError(v.Pos(), "Array: unsupported dynamic length")
 		}
-
 		value, err := a.astTypeToSpec(v.DataType)
 		if err != nil {
 			return nil, err
 		}
-
 		return spec.ArrayType{
 			RawName: v.RawText(),
 			Value:   value,
@@ -97,7 +87,6 @@ func (a *Analyzer) astTypeToSpec(in ast.DataType) (spec.Type, error) {
 		if err != nil {
 			return nil, err
 		}
-
 		return spec.ArrayType{
 			RawName: v.RawText(),
 			Value:   value,
@@ -112,27 +101,7 @@ func (a *Analyzer) convert2Spec() error {
 		return err
 	}
 
-	if err := a.fillService(); err != nil {
-		return err
-	}
-
-	sort.SliceStable(a.spec.Types, func(i, j int) bool {
-		return a.spec.Types[i].Name() < a.spec.Types[j].Name()
-	})
-
-	groups := make([]spec.Group, 0, len(a.spec.Service.Groups))
-	for _, v := range a.spec.Service.Groups {
-		sort.SliceStable(v.Routes, func(i, j int) bool {
-			return v.Routes[i].Path < v.Routes[j].Path
-		})
-		groups = append(groups, v)
-	}
-	sort.SliceStable(groups, func(i, j int) bool {
-		return groups[i].Annotation.Properties["group"] < groups[j].Annotation.Properties["group"]
-	})
-	a.spec.Service.Groups = groups
-
-	return nil
+	return a.fillService()
 }
 
 func (a *Analyzer) convertAtDoc(atDoc ast.AtDocStmt) spec.AtDoc {
@@ -177,7 +146,6 @@ func (a *Analyzer) fieldToMember(field *ast.ElemExpr) (spec.Member, error) {
 	if field.Tag != nil {
 		m.Tag = field.Tag.Token.Text
 	}
-
 	return m, nil
 }
 
@@ -274,7 +242,8 @@ func (a *Analyzer) fillTypes() error {
 	for _, item := range a.api.TypeStmt {
 		switch v := (item).(type) {
 		case *ast.TypeLiteralStmt:
-			if err := a.fillTypeExpr(v.Expr); err != nil {
+			err := a.fillTypeExpr(v.Expr)
+			if err != nil {
 				return err
 			}
 		case *ast.TypeGroupStmt:
@@ -392,14 +361,9 @@ func Parse(filename string, src interface{}) (*spec.ApiSpec, error) {
 		return nil, err
 	}
 
-	is := importstack.New()
-	err := is.Push(ast.Filename)
-	if err != nil {
-		return nil, err
-	}
-
-	importSet := map[string]lang.PlaceholderType{}
-	api, err := convert2API(ast, importSet, is)
+	var importManager = make(map[string]placeholder.Type)
+	importManager[ast.Filename] = placeholder.PlaceHolder
+	api, err := convert2API(ast, importManager)
 	if err != nil {
 		return nil, err
 	}

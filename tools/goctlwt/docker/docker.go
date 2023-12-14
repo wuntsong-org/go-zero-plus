@@ -38,7 +38,7 @@ type Docker struct {
 	Timezone    string
 }
 
-// dockerCommand provides the entry for goctl docker
+// dockerCommand provides the entry for goctlwt docker
 func dockerCommand(_ *cobra.Command, _ []string) (err error) {
 	defer func() {
 		if err == nil {

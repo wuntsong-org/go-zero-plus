@@ -11,7 +11,7 @@ import (
 )
 
 // GenPb generates the pb.go file, which is a layer of packaging for protoc to generate gprc,
-// but the commands and flags in protoc are not completely joined in goctl. At present, proto_path(-I) is introduced
+// but the commands and flags in protoc are not completely joined in goctlwt. At present, proto_path(-I) is introduced
 func (g *Generator) GenPb(ctx DirContext, c *ZRpcContext) error {
 	return g.genPbDirect(ctx, c)
 }
@@ -31,14 +31,14 @@ func (g *Generator) genPbDirect(ctx DirContext, c *ZRpcContext) error {
 }
 
 func (g *Generator) setPbDir(ctx DirContext, c *ZRpcContext) error {
-	pbDir, err := findPbFile(c.GoOutput, c.Src, false)
+	pbDir, err := findPbFile(c.GoOutput, false)
 	if err != nil {
 		return err
 	}
 	if len(pbDir) == 0 {
 		return fmt.Errorf("pg.go is not found under %q", c.GoOutput)
 	}
-	grpcDir, err := findPbFile(c.GrpcOutput, c.Src, true)
+	grpcDir, err := findPbFile(c.GrpcOutput, true)
 	if err != nil {
 		return err
 	}
@@ -62,11 +62,7 @@ const (
 	grpcSuffix = "_grpc.pb.go"
 )
 
-func findPbFile(current string, src string, grpc bool) (string, error) {
-	protoName := strings.TrimSuffix(filepath.Base(src), filepath.Ext(src))
-	pbFile := protoName + "." + pbSuffix
-	grpcFile := protoName + grpcSuffix
-
+func findPbFile(current string, grpc bool) (string, error) {
 	fileSystem := os.DirFS(current)
 	var ret string
 	err := fs.WalkDir(fileSystem, ".", func(path string, d fs.DirEntry, err error) error {
@@ -75,11 +71,11 @@ func findPbFile(current string, src string, grpc bool) (string, error) {
 		}
 		if strings.HasSuffix(path, pbSuffix) {
 			if grpc {
-				if strings.HasSuffix(path, grpcFile) {
+				if strings.HasSuffix(path, grpcSuffix) {
 					ret = path
 					return os.ErrExist
 				}
-			} else if strings.HasSuffix(path, pbFile) {
+			} else if !strings.HasSuffix(path, grpcSuffix) {
 				ret = path
 				return os.ErrExist
 			}

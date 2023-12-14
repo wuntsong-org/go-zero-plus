@@ -7,12 +7,13 @@ import (
 	"strings"
 
 	"github.com/wuntsong-org/go-zero-plus/core/collection"
+	"github.com/zeromicro/ddl-parser/parser"
+
 	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/model/sql/converter"
 	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/model/sql/model"
 	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/model/sql/util"
 	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/util/console"
 	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/util/stringx"
-	"github.com/zeromicro/ddl-parser/parser"
 )
 
 const timeImport = "time.Time"
@@ -82,9 +83,8 @@ func Parse(filename, database string, strict bool) ([]*Table, error) {
 			primaryColumn    string
 			primaryColumnSet = collection.NewSet()
 			uniqueKeyMap     = make(map[string][]string)
-			// Unused local variable
-			// normalKeyMap     = make(map[string][]string)
-			columns = e.Columns
+			normalKeyMap     = make(map[string][]string)
+			columns          = e.Columns
 		)
 
 		for _, column := range columns {
@@ -127,8 +127,6 @@ func Parse(filename, database string, strict bool) ([]*Table, error) {
 			return nil, fmt.Errorf("%s: unexpected join primary key", prefix)
 		}
 
-		delete(uniqueKeyMap, indexNameGen(primaryColumn, "idx"))
-		delete(uniqueKeyMap, indexNameGen(primaryColumn, "unique"))
 		primaryKey, fieldM, err := convertColumns(columns, primaryColumn, strict)
 		if err != nil {
 			return nil, err
@@ -144,15 +142,20 @@ func Parse(filename, database string, strict bool) ([]*Table, error) {
 			}
 		}
 
-		uniqueIndex := make(map[string][]*Field)
+		var (
+			uniqueIndex = make(map[string][]*Field)
+			normalIndex = make(map[string][]*Field)
+		)
 
 		for indexName, each := range uniqueKeyMap {
 			for _, columnName := range each {
-				// Prevent a crash if there is a unique key constraint with a nil field.
-				if fieldM[columnName] == nil {
-					return nil, fmt.Errorf("table %s: unique key with error column name[%s]", e.Name, columnName)
-				}
 				uniqueIndex[indexName] = append(uniqueIndex[indexName], fieldM[columnName])
+			}
+		}
+
+		for indexName, each := range normalKeyMap {
+			for _, columnName := range each {
+				normalIndex[indexName] = append(normalIndex[indexName], fieldM[columnName])
 			}
 		}
 

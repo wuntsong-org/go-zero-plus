@@ -1,12 +1,12 @@
 package {{.pkg}}
 {{if .withCache}}
 import (
-	"github.com/wuntsong-org/go-zero-plus/core/stores/cache"
-	"github.com/wuntsong-org/go-zero-plus/core/stores/sqlx"
+	"github.com/zeromicro/go-zero/core/stores/cache"
+	"github.com/zeromicro/go-zero/core/stores/sqlx"
 )
 {{else}}
 
-import "github.com/wuntsong-org/go-zero-plus/core/stores/sqlx"
+import "github.com/zeromicro/go-zero/core/stores/sqlx"
 {{end}}
 var _ {{.upperStartCamelObject}}Model = (*custom{{.upperStartCamelObject}}Model)(nil)
 
@@ -15,7 +15,6 @@ type (
 	// and implement the added methods in custom{{.upperStartCamelObject}}Model.
 	{{.upperStartCamelObject}}Model interface {
 		{{.lowerStartCamelObject}}Model
-		{{if not .withCache}}withSession(session sqlx.Session) {{.upperStartCamelObject}}Model{{end}}
 	}
 
 	custom{{.upperStartCamelObject}}Model struct {
@@ -29,10 +28,3 @@ func New{{.upperStartCamelObject}}Model(conn sqlx.SqlConn{{if .withCache}}, c ca
 		default{{.upperStartCamelObject}}Model: new{{.upperStartCamelObject}}Model(conn{{if .withCache}}, c, opts...{{end}}),
 	}
 }
-
-{{if not .withCache}}
-func (m *custom{{.upperStartCamelObject}}Model) withSession(session sqlx.Session) {{.upperStartCamelObject}}Model {
-    return New{{.upperStartCamelObject}}Model(sqlx.NewSqlConnFromSession(session))
-}
-{{end}}
-

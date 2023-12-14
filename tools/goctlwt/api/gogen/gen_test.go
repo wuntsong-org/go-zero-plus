@@ -10,7 +10,6 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/api/parser"
-	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/pkg/env"
 	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/rpc/execx"
 	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/util/pathx"
 )
@@ -54,10 +53,7 @@ func TestParser(t *testing.T) {
 	filename := "greet.api"
 	err := os.WriteFile(filename, []byte(testApiTemplate), os.ModePerm)
 	assert.Nil(t, err)
-	env.Set(t, env.GoctlExperimental, "off")
-	t.Cleanup(func() {
-		os.Remove(filename)
-	})
+	defer os.Remove(filename)
 
 	api, err := parser.Parse(filename)
 	assert.Nil(t, err)

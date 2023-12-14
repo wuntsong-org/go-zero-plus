@@ -7,7 +7,7 @@ goctl model 为go-zero下的工具模块中的组件之一，目前支持识别m
 * 通过ddl生成
 
     ```shell script
-    goctl model mysql ddl -src="./*.sql" -dir="./sql/model" -c
+    goctlwt model mysql ddl -src="./*.sql" -dir="./sql/model" -c
     ```
 
     执行上述命令后即可快速生成CURD代码。
@@ -21,7 +21,7 @@ goctl model 为go-zero下的工具模块中的组件之一，目前支持识别m
 * 通过datasource生成
 
     ```shell script
-    goctl model mysql datasource -url="user:password@tcp(127.0.0.1:3306)/database" -table="*"  -dir="./model"
+    goctlwt model mysql datasource -url="user:password@tcp(127.0.0.1:3306)/database" -table="*"  -dir="./model"
     ```
 
 * 生成代码示例
@@ -246,7 +246,7 @@ OPTIONS:
   * ddl
 
 	```shell script
-	goctl model mysql -src={patterns} -dir={dir} -cache
+	goctlwt model mysql -src={patterns} -dir={dir} -cache
 	```
 
 	help
@@ -270,7 +270,7 @@ OPTIONS:
   * datasource
 
 	```shell script
-	goctl model mysql datasource -url={datasource} -table={patterns}  -dir={dir} -cache=true
+	goctlwt model mysql datasource -url={datasource} -table={patterns}  -dir={dir} -cache=true
 	```
 
 	help
@@ -304,26 +304,26 @@ OPTIONS:
   * ddl
   
       ```shell script
-        goctl model -src={patterns} -dir={dir}
+        goctlwt model -src={patterns} -dir={dir}
       ```
 
   * datasource
   
       ```shell script
-        goctl model mysql datasource -url={datasource} -table={patterns}  -dir={dir}
+        goctlwt model mysql datasource -url={datasource} -table={patterns}  -dir={dir}
       ```
 
   or
   * ddl
 
       ```shell script
-        goctl model -src={patterns} -dir={dir}
+        goctlwt model -src={patterns} -dir={dir}
       ```
 
   * datasource
   
       ```shell script
-        goctl model mysql datasource -url={datasource} -table={patterns}  -dir={dir}
+        goctlwt model mysql datasource -url={datasource} -table={patterns}  -dir={dir}
       ```
   
 生成代码仅基本的CURD结构。
@@ -344,7 +344,7 @@ OPTIONS:
   
   理论上是没任何问题，但是我们认为，对于model层的数据操作均是以整个结构体为单位，包括查询，我不建议只查询某部分字段（不反对），否则我们的缓存就没有意义了。
 
-* 为什么不支持`findPageLimit`、`findAll`这种模型代码生成？
+* 为什么不支持`findPageLimit`、`findAll`这么模式代码生层？
   
   目前，我认为除了基本的CURD外，其他的代码均属于<i>业务型</i>代码，这个我觉得开发人员根据业务需要进行编写更好。
 
@@ -379,4 +379,3 @@ OPTIONS:
 | enum           | string          | sql.NullString                         |
 | set            | string          | sql.NullString                         |
 | json           | string          | sql.NullString                         |
-

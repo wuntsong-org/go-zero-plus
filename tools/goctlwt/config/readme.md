@@ -37,13 +37,13 @@
 # 使用方法
 目前可通过在生成api、rpc、model时通过`--style`参数指定format格式，如：
 ```shell script
-goctl api go test.api -dir . -style gozero
+goctlwt api go test.api -dir . -style gozero
 ```
 ```shell script
- goctl rpc proto -src test.proto -dir . -style go_zero
+ goctlwt rpc proto -src test.proto -dir . -style go_zero
 ```
 ```shell script
-goctl model mysql datasource -url="" -table="*" -dir ./snake -style GoZero
+goctlwt model mysql datasource -url="" -table="*" -dir ./snake -style GoZero
 ```
 
 # 默认值

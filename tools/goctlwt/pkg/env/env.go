@@ -7,7 +7,6 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
-	"testing"
 
 	"github.com/wuntsong-org/go-zero-plus/tools/goctlwt/internal/version"
 	sortedmap "github.com/wuntsong-org/go-zero-plus/tools/goctlwt/pkg/collection"
@@ -36,7 +35,7 @@ const (
 	ExperimentalOff = "off"
 )
 
-// init initializes the goctl environment variables, the environment variables of the function are set in order,
+// init initializes the goctlwt environment variables, the environment variables of the function are set in order,
 // please do not change the logic order of the code.
 func init() {
 	defaultGoctlHome, err := pathx.GetDefaultGoctlHome()
@@ -60,7 +59,7 @@ func init() {
 		if value := existsEnv.GetStringOr(GoctlCache, ""); value != "" {
 			goctlEnv.SetKV(GoctlCache, value)
 		}
-		experimental := existsEnv.GetOr(GoctlExperimental, ExperimentalOn)
+		experimental := existsEnv.GetOr(GoctlExperimental, ExperimentalOff)
 		goctlEnv.SetKV(GoctlExperimental, experimental)
 	}
 
@@ -77,7 +76,7 @@ func init() {
 	}
 
 	if !goctlEnv.HasKey(GoctlExperimental) {
-		goctlEnv.SetKV(GoctlExperimental, ExperimentalOn)
+		goctlEnv.SetKV(GoctlExperimental, ExperimentalOff)
 	}
 
 	goctlEnv.SetKV(GoctlVersion, version.BuildVersion)
@@ -110,14 +109,6 @@ func Print(args ...string) string {
 
 func Get(key string) string {
 	return GetOr(key, "")
-}
-
-// Set sets the environment variable for testing
-func Set(t *testing.T, key, value string) {
-	goctlEnv.SetKV(key, value)
-	t.Cleanup(func() {
-		goctlEnv.Remove(key)
-	})
 }
 
 func GetOr(key, def string) string {

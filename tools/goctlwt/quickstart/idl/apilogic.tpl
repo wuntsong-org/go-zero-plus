@@ -3,7 +3,7 @@ package logic
 import (
 	"context"
 
-	"github.com/wuntsong-org/go-zero-plus/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 
 	"{{.svcPkg}}"
 	"{{.typesPkg}}"{{if .callRPC}}

@@ -20,7 +20,7 @@ var apiTemplate string
 var (
 	// VarStringOutput describes the output.
 	VarStringOutput string
-	// VarStringHome describes the goctl home.
+	// VarStringHome describes the goctlwt home.
 	VarStringHome string
 	// VarStringRemote describes the remote git repository.
 	VarStringRemote string

@@ -52,7 +52,7 @@ func newMicroService() micro {
 func (m micro) mustStartRPCProject() {
 	logx.Must(initRPCProto())
 	log.Debug(">> Generating quickstart zRPC project...")
-	arg := "goctl rpc protoc " + protoName + " --go_out=. --go-grpc_out=. --zrpc_out=. --verbose"
+	arg := "goctlwt rpc protoc " + protoName + " --go_out=. --go-grpc_out=. --zrpc_out=. --verbose"
 	execCommand(zrpcWorkDir, arg)
 	etcFile := filepath.Join(zrpcWorkDir, "etc", "greet.yaml")
 	logx.Must(os.WriteFile(etcFile, []byte(rpcEtcContent), 0o666))

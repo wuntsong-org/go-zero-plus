@@ -1,5 +1,5 @@
 package {{.pkg}}
 
-import "github.com/wuntsong-org/go-zero-plus/core/stores/sqlx"
+import "github.com/zeromicro/go-zero/core/stores/sqlx"
 
 var ErrNotFound = sqlx.ErrNotFound

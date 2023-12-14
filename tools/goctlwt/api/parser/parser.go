@@ -17,9 +17,7 @@ type parser struct {
 	spec *spec.ApiSpec
 }
 
-// Depreacted: use tools/goctl/pkg/parser/api/parser/parser.go:18 instead,
-// it will be removed in the future.
-// Parse parses the api file.
+// Parse parses the api file
 func Parse(filename string) (*spec.ApiSpec, error) {
 	if env.UseExperimental() {
 		return apiParser.Parse(filename, "")
@@ -63,15 +61,11 @@ func parseContent(content string, skipCheckTypeDeclaration bool, filename ...str
 	return apiSpec, nil
 }
 
-// Depreacted: use tools/goctl/pkg/parser/api/parser/parser.go:18 instead,
-// it will be removed in the future.
 // ParseContent parses the api content
 func ParseContent(content string, filename ...string) (*spec.ApiSpec, error) {
 	return parseContent(content, false, filename...)
 }
 
-// Depreacted: use tools/goctl/pkg/parser/api/parser/parser.go:18 instead,
-// it will be removed in the future.
 // ParseContentWithParserSkipCheckTypeDeclaration parses the api content with skip check type declaration
 func ParseContentWithParserSkipCheckTypeDeclaration(content string, filename ...string) (*spec.ApiSpec, error) {
 	return parseContent(content, true, filename...)
@@ -180,15 +174,17 @@ func (p parser) findDefinedType(name string) (*spec.Type, error) {
 }
 
 func (p parser) fieldToMember(field *ast.TypeField) spec.Member {
-	var name string
-	var tag string
+	name := ""
+	tag := ""
 	if !field.IsAnonymous {
 		name = field.Name.Text()
-		if field.Tag != nil {
-			tag = field.Tag.Text()
+		if field.Tag == nil {
+			panic(fmt.Sprintf("error: line %d:%d field %s has no tag",
+				field.Name.Line(), field.Name.Column(), field.Name.Text()))
 		}
-	}
 
+		tag = field.Tag.Text()
+	}
 	return spec.Member{
 		Name:     name,
 		Type:     p.astTypeToSpec(field.DataType),

@@ -8,7 +8,7 @@ import (
 
 // Part 1
 // The apiparser_parser.go file was split into multiple files because it
-// was too large and caused a possible memory overflow during goctl installation.
+// was too large and caused a possible memory overflow during goctlwt installation.
 
 func (s *SyntaxLitContext) STRING() antlr.TerminalNode {
 	return s.GetToken(ApiParserParserSTRING, 0)

@@ -1,7 +1,7 @@
 // DO NOT EDIT.
 // Tool: split apiparser_parser.go
 // The apiparser_parser.go file was split into multiple files because it
-// was too large and caused a possible memory overflow during goctl installation.
+// was too large and caused a possible memory overflow during goctlwt installation.
 package api
 
 import (
@@ -16,7 +16,6 @@ import (
 )
 
 func TestFileSplitor(t *testing.T) {
-	t.Skip("skip this test because it is used to split the apiparser_parser.go file by developer.")
 	dir := "."
 	data, err := os.ReadFile(filepath.Join(dir, "apiparser_parser.go"))
 	if err != nil {
@@ -42,7 +41,7 @@ import "github.com/zeromicro/antlr"
 
 // Part %s
 // The apiparser_parser.go file was split into multiple files because it
-// was too large and caused a possible memory overflow during goctl installation.
+// was too large and caused a possible memory overflow during goctlwt installation.
 `, part))
 		}
 

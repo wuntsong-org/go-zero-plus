@@ -156,7 +156,6 @@ func (p *Parser) invokeImportedApi(filename string, imports []*ImportExpr) ([]*A
 		}
 		// ignore already imported file
 		if p.alreadyImported(impPath) {
-			p.importStatck.pop()
 			continue
 		}
 		p.fileMap[impPath] = PlaceHolder{}

@@ -24,7 +24,7 @@ var templates = map[string]string{
 	mainTemplateFile:    mainTemplate,
 }
 
-// GenTemplates is the entry for command goctl template,
+// GenTemplates is the entry for command goctlwt template,
 // it will create the specified category
 func GenTemplates() error {
 	return pathx.InitTemplates(category, templates)

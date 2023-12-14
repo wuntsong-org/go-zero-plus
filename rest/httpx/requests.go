@@ -1,6 +1,7 @@
 package httpx
 
 import (
+	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -35,7 +36,21 @@ type Validator interface {
 }
 
 // Parse parses the request.
-func Parse(r *http.Request, v any) error {
+func Parse(r *http.Request, v any) (err error) {
+	defer func() {
+		r := recover()
+		if r == nil {
+			return
+		}
+
+		tmp, ok := r.(error)
+		if ok {
+			err = tmp
+		} else {
+			err = fmt.Errorf("panic error: %v", r)
+		}
+	}()
+
 	if err := ParsePath(r, v); err != nil {
 		return err
 	}

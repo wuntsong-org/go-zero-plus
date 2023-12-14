@@ -224,7 +224,7 @@ Verbose: true
 					}
 				})
 
-				assert.NotNil(t, ng.start(mockedRouter{}, func(svr *http.Server) {
+				assert.NotNil(t, ng.start(nil, mockedRouter{}, func(svr *http.Server) {
 				}))
 
 				timeout := time.Second * 3
@@ -415,7 +415,7 @@ func TestEngine_start(t *testing.T) {
 			Host: "localhost",
 			Port: -1,
 		})
-		assert.Error(t, ng.start(router.NewRouter()))
+		assert.Error(t, ng.start(nil, router.NewRouter()))
 	})
 
 	t.Run("https", func(t *testing.T) {
@@ -426,7 +426,7 @@ func TestEngine_start(t *testing.T) {
 			KeyFile:  "bar",
 		})
 		ng.tlsConfig = &tls.Config{}
-		assert.Error(t, ng.start(router.NewRouter()))
+		assert.Error(t, ng.start(nil, router.NewRouter()))
 	})
 }
 

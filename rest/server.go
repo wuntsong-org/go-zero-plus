@@ -117,14 +117,36 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // Graceful shutdown is enabled by default.
 // Use proc.SetTimeToForceQuit to customize the graceful shutdown period.
 func (s *Server) Start() {
-	handleError(s.ngin.start(s.router))
+	handleError(s.ngin.start(nil, s.router))
+}
+
+func (s *Server) StartAsGoRoutine() *http.Server {
+	ch := make(chan *http.Server, 1)
+	go func() {
+		defer func() {
+			recover()
+		}()
+		handleError(s.ngin.start(ch, s.router))
+	}()
+	return <-ch
 }
 
 // StartWithOpts starts the Server.
 // Graceful shutdown is enabled by default.
 // Use proc.SetTimeToForceQuit to customize the graceful shutdown period.
 func (s *Server) StartWithOpts(opts ...StartOption) {
-	handleError(s.ngin.start(s.router, opts...))
+	handleError(s.ngin.start(nil, s.router, opts...))
+}
+
+func (s *Server) StartAsGoRoutineWithOpts(opts ...StartOption) *http.Server {
+	ch := make(chan *http.Server, 1)
+	go func() {
+		defer func() {
+			recover()
+		}()
+		handleError(s.ngin.start(ch, s.router, opts...))
+	}()
+	return <-ch
 }
 
 // Stop stops the Server.
@@ -235,6 +257,18 @@ func WithNotFoundHandler(handler http.Handler) RunOption {
 func WithNotAllowedHandler(handler http.Handler) RunOption {
 	return func(server *Server) {
 		server.router.SetNotAllowedHandler(handler)
+	}
+}
+
+func WithOptionsHandler(handler http.Handler) RunOption {
+	return func(server *Server) {
+		server.router.SetOptionsHandler(handler)
+	}
+}
+
+func WithGlobalMiddleware(middleware httpx.MiddlewareFunc) RunOption {
+	return func(server *Server) {
+		server.router.SetMiddleware(middleware)
 	}
 }
 

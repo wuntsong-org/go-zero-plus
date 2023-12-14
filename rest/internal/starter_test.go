@@ -16,7 +16,7 @@ func TestStartHttp(t *testing.T) {
 	fields := strings.Split(svr.Listener.Addr().String(), ":")
 	port, err := strconv.Atoi(fields[1])
 	assert.Nil(t, err)
-	err = StartHttp(fields[0], port, http.NotFoundHandler(), func(svr *http.Server) {
+	err = StartHttp(nil, fields[0], port, http.NotFoundHandler(), func(svr *http.Server) {
 		svr.IdleTimeout = 0
 	})
 	assert.NotNil(t, err)
@@ -28,7 +28,7 @@ func TestStartHttps(t *testing.T) {
 	fields := strings.Split(svr.Listener.Addr().String(), ":")
 	port, err := strconv.Atoi(fields[1])
 	assert.Nil(t, err)
-	err = StartHttps(fields[0], port, "", "", http.NotFoundHandler(), func(svr *http.Server) {
+	err = StartHttps(nil, fields[0], port, "", "", http.NotFoundHandler(), func(svr *http.Server) {
 		svr.IdleTimeout = 0
 	})
 	assert.NotNil(t, err)

@@ -53,7 +53,23 @@ func GetFormValues(r *http.Request) (map[string]any, error) {
 
 		return params, nil
 	} else {
-		return make(map[string]any, 0), nil
+		val := r.URL.Query()
+
+		params := make(map[string]any, len(val))
+		for name, values := range val {
+			if len(values) == 0 {
+				continue
+			}
+
+			formValue := values[0]
+			if len(formValue) == 0 {
+				continue
+			}
+
+			params[name] = formValue
+		}
+
+		return params, nil
 	}
 }
 

@@ -6,6 +6,9 @@
 !**/Dockerfile
 !**/Makefile
 
+!LICENSE
+!NOTICE
+
 # Unignore all dirs
 !*/
 !api
